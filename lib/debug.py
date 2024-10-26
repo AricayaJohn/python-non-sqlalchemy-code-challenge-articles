@@ -6,7 +6,9 @@ from classes.many_to_many import Author
 from classes.many_to_many import Magazine
 
 if __name__ == '__main__':
-    print("HELLO! :) let's debug :vibing_potato:")
+#     print("HELLO! :) let's debug :vibing_potato:")
+
+    author1 = Author("John")
 
 
     # don't remove this line, it's for debugging!
