@@ -9,6 +9,7 @@ if __name__ == '__main__':
 #     print("HELLO! :) let's debug :vibing_potato:")
 
     author1 = Author("John")
+    magazine1 = Magazine("GQ", "Business")
 
 
     # don't remove this line, it's for debugging!
