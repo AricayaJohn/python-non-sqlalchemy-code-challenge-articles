@@ -62,17 +62,17 @@ class Author:
         return [article for article in Article.all if article.author == self]
 
     def magazines(self):
-        return list({article.magazine for article in self.article()})
+        return list({article.magazine for article in self.articles()})
 
     def add_article(self, magazine, title):
         new_article = Article(self, magazine, title)
         return new_article
 
     def topic_areas(self):
-        article = self.article()
-        if not article:
+        articles = self.articles()
+        if not articles:
             return None
-        return list({article.magazine.category for article in article})
+        return list({article.magazine.category for article in articles})
 
 class Magazine:
     def __init__(self, name, category):
@@ -91,7 +91,7 @@ class Magazine:
         #     raise IndexError("String length must have 2 - 16 characters")
         # elif hasattr(self, "_name"):
         #     raise ValueError("Magazine has value name already set")
-        if isinstance(name, str) and 2 <= len(name) <= 16 and not hasattr(self, "_name"):
+        if isinstance(name, str) and 2 <= len(name) <= 16:
             self._name = name
 
     @property
@@ -107,7 +107,7 @@ class Magazine:
         # if hasattr(self, "_category"):
         #     raise ValueError("Magazine Category is already set")
         # self._category = category
-        if isinstance(category, str) and len(category) > 0 and not hasattr(self, "_category"):
+        if isinstance(category, str) and len(category) > 0:
             self._category = category
         
     def articles(self):
@@ -117,7 +117,7 @@ class Magazine:
         return list({article.author for article in self.articles()})
 
     def article_titles(self):
-        article = self.articles()
+        articles = self.articles()
         if not articles:
             return None
         return [article.title for article in articles]
