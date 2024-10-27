@@ -1,4 +1,5 @@
 class Article:
+    all = []
     def __init__(self, author, magazine, title):
         self.author = author
         self.magazine = magazine
@@ -18,7 +19,25 @@ class Article:
         #     raise IndexError("Title length value error")
         # elif hasattr(self, "_title"):
         #     raise ValueError("Title already has value set")
-        
+    
+    @property
+    def author(self):
+        return self._author
+    
+    @author.setter
+    def author(self, author):
+        if isinstance(author, Author):
+            self._author = author
+
+    @property
+    def magazine(self):
+        return self._magazine
+
+    @magazine.setter
+    def magazine(self, magazine):
+        if isinstance(magazine, Magazine):
+            self._magazine = magazine
+
 class Author:
     def __init__(self, name):
         self.name = name
@@ -39,10 +58,10 @@ class Author:
         #     raise ValueError("Name already has value set")
              
     def articles(self):
-        pass
+        return [article for article in Article.all if article.author == self]
 
     def magazines(self):
-        pass
+        return list({article.magazine for article in self.article()})
 
     def add_article(self, magazine, title):
         pass
@@ -87,10 +106,10 @@ class Magazine:
             self._category = category
         
     def articles(self):
-        pass
+        return [article for article in Article.all if article.magazine == self]
 
     def contributors(self):
-        pass
+        return list({article.author for article in self.articles()})
 
     def article_titles(self):
         pass
