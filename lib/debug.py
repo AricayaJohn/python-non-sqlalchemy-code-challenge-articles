@@ -10,6 +10,7 @@ if __name__ == '__main__':
 
     author1 = Author("John")
     magazine1 = Magazine("GQ", "Business")
+    article1 = Article(author1, magazine1, "New in Tech")
 
 
     # don't remove this line, it's for debugging!
